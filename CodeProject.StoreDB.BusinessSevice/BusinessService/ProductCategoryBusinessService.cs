@@ -71,7 +71,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Product category successfully created.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@
 
                 _dataService.CommitTransaction(true);
 
-                transaction.ReturnMessage.Add("Delete successfully!");
+                transaction.ReturnMessage.Add("successfully!");
             }
             catch (Exception ex)
             {
@@ -343,7 +343,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Product category was successfully updated.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {

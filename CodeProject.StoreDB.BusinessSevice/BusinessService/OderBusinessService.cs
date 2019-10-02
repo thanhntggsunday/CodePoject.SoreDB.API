@@ -87,7 +87,7 @@
 
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Order successfully created.");
+                transaction.ReturnMessage.Add("successfull");
             }
             catch (Exception ex)
             {
@@ -337,7 +337,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Order was successfully updated.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {

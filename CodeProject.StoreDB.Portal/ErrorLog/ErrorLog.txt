@@ -2216,3 +2216,13 @@
 2019-10-02 10:42:38,888 [11] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
 2019-10-02 10:42:38,994 [11] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
 2019-10-02 10:42:39,054 [11] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:23,549 [9] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:25,064 [9] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:25,145 [9] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:53,052 [10] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:53,544 [10] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:53,564 [10] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:57,180 [11] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:37:59,760 [13] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:38:19,177 [9] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.
+2019-10-02 11:41:09,013 [23] INFO CodeProject.StoreDB.DataService.Logger.Log4NetLogger - Initial Product Service.

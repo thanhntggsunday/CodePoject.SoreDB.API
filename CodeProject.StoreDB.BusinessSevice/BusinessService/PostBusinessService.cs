@@ -106,7 +106,7 @@
 
                 _dataService.CommitTransaction(true);
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Delete successfully!");
+                transaction.ReturnMessage.Add("successfully!");
 
                 // End session
 

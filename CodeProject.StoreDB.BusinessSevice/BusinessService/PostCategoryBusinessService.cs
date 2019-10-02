@@ -72,7 +72,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Post category successfully created.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {
@@ -270,7 +270,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Post category was successfully updated.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {

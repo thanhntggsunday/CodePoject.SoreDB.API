@@ -61,7 +61,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Product successfully created.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {
@@ -220,7 +220,7 @@
                 _dataService.CommitTransaction(true);
 
                 transaction.ReturnStatus = true;
-                transaction.ReturnMessage.Add("Product was successfully updated.");
+                transaction.ReturnMessage.Add("successfully");
             }
             catch (Exception ex)
             {
