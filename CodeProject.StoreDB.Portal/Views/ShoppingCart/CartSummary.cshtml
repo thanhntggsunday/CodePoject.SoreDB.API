@@ -1,0 +1,9 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="cart">
+    <p>
+        Welcome to our Online Store! @Html.ActionLink("Cart (" + ViewData["CartCount"] + ")", "Index", "ShoppingCart", null, new { id = "cart-status" })
+    </p>
+</div>

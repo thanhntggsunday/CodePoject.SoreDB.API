@@ -1,0 +1,106 @@
+﻿@model CodeProject.StoreDB.Portal.Classes.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Search products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Asset/Client/css/pagination-2.css" rel="stylesheet" />
+
+
+@section Scripts{
+    <script src="~/Asset/Client/js/handlebars-v4.0.2.js"></script>
+    <script src="~/Asset/Client/js/jquery.twbsPagination.min.js"></script>
+    <script src="~/Asset/Client/Scripts/LoadDataService.js"></script>
+
+
+}
+<br />
+<p id="p-totalRows" class="hidden">@Model.Pager.TotalRows</p>
+<p id="p-productName" class="hidden">@Model.ProductSearchContent.ProductName</p>
+
+
+<div class="clear"></div>
+
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Products</h3>
+        </div>
+        <div class="">
+           
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="section group">
+        @{var count = 0; }
+
+        <div id="productsGrid">
+            <div class="clear"></div>
+
+            @foreach (var item in Model.ProductDTOs)
+            {
+                var url = "/Product/Details/" + item.ID;
+                count++;
+
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                    <h5>@item.Name</h5>
+
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@(item.Price > 0 ? item.Price.ToString("N0") : "Liên hệ")</span></p>
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="/ShoppingCart/AddToCart?id=@item.ID">Thêm vào giỏ</a></h4>
+                        </div>
+                        @*<div class="clear"></div>*@
+                    </div>
+                </div>
+
+                if (count % 4 == 0)
+                {
+                    <div class="clear"></div>
+                }
+
+            }
+
+        </div>
+
+
+        <div class="clear"></div>
+
+        <div class="right">
+            <!--Phân trang-->
+           
+            <div id="pagination" class="pagination">                
+            </div>
+            <p id="pageOnTotal">Page</p>
+
+        </div>
+    </div>
+</div>
+
+<!--Template products grid-->
+<script id="example-template" type="text/x-handlebars-template">
+    <div class="clear"></div>
+
+    {{#each products}}
+    <div class="grid_1_of_4 images_1_of_4">
+        <a href="/Product/Details/{{ID}}"><img src="{{Image}}" alt="{{Name}}" /></a>
+        <h5>{{Name}}</h5>
+
+        <div class="price-details">
+            <div class="price-number">
+                <p><span class="rupees"> {{Price}} </span></p>
+            </div>
+            <div class="add-cart">
+                <h4><a href="/ShoppingCart/AddToCart?id={{ID}}">Thêm vào giỏ</a></h4>
+            </div>
+
+        </div>
+    </div>
+    {{/each}}
+
+</script>

@@ -1,0 +1,151 @@
+﻿@model CodeProject.StoreDB.Portal.Classes.ViewModels.ProductViewModel
+@using CodeProject.StoreDB.Model.Entities
+
+@{
+    ViewBag.Title = "Index";
+
+    var slides = (List<Slide>) ViewBag.Slides;
+
+}
+
+
+@section slide
+{
+   
+            <div class="slider">
+                <div id="slider">
+                    <div id="mover">
+                        @foreach (var item in slides)
+                        {
+                            <div class="slide" id="slide-@item.ID">
+                                <div class="slider-img">
+                                    <a href="@item.Url"><img src="@item.Image" alt="learn more" /></a>
+                                </div>
+                                <div class="slider-text">
+                                    <h1>Clearance<br><span>SALE</span></h1>
+                                    <h2>UPTo 20% OFF</h2>
+                                    <div class="features_list">
+                                        <h4>
+                                            Get to Know More About Our Memorable Services
+                                            Lorem Ipsum is simply dummy text
+                                        </h4>
+                                    </div>
+                                    <a href="#" class="button">Shop Now</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+      
+       
+    
+}
+
+<div class="clear"></div>
+
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Laptops  mới</h3>
+        </div>
+        <div class="see">
+            <p><a href="/Product/GetProductsByCategoryId?categoryId=2">See all Products</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="section group">
+        @{var count = 0; }
+
+        <div class="clear"></div>
+
+        @foreach (var item in Model.LaptopDTOs)
+        {
+            var url = "/Product/Details/" + item.ID;
+            count++;
+
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                <h5>@item.Name</h5>
+                @*<p>@item.Description</p>*@
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@(item.Price > 0 ? item.Price.ToString("N0") : "Liên hệ")</span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="/ShoppingCart/AddToCart?id=@item.ID">Thêm vào giỏ</a></h4>
+                    </div>
+                    @*<div class="clear"></div>*@
+                </div>
+            </div>
+
+            if (count % 4 == 0)
+            {
+                <div class="clear"></div>
+            }
+
+        }
+
+        <div class="clear"></div>
+
+        @*Pagination:*@
+    </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Smartphones  mới</h3>
+        </div>
+        <div class="see">
+            <p><a href="/Product/GetProductsByCategoryId?categoryId=1">See all Products</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="section group">
+        @{var count2 = 0; }
+
+        <div class="clear"></div>
+
+        @foreach (var item in Model.SmartPhonesDTOs)
+        {
+            var url = "/Product/Details/" + item.ID;
+            count2++;
+
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                <h5>@item.Name</h5>
+             
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@(item.Price > 0 ? item.Price.ToString("N0") : "Liên hệ")</span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="/ShoppingCart/AddToCart?id=@item.ID">Thêm vào giỏ</a></h4>
+                    </div>
+                    @*<div class="clear"></div>*@
+                </div>
+            </div>
+
+            if (count2 % 4 == 0)
+            {
+                <div class="clear"></div>
+            }
+
+        }
+
+        <div class="clear"></div>
+
+        @*Pagination:*@
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+@section Scripts{
+  
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = '/Asset/Client/Templates/About.html';
+
+            GetTemplateHtmlAjax(url);
+        });
+
+        GetTemplateHtmlAjax = function (url) {
+            var source;
+            var template;
+            var html;
+
+            $.ajax({
+                url: url,
+                cache: true
+            }).then(function (data) {
+                // console.log(data);
+                $('#about-id').html(data);
+
+            });
+        };
+
+    </script>
+
+}
+
+<div id="about-id">--</div>

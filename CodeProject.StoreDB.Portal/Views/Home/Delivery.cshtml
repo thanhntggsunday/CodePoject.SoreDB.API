@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Delivery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Delivery</h2>
+
+@section Scripts{
+   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = '/Asset/Client/Templates/delivery.html';
+
+            GetTemplateHtmlAjax(url);
+        });
+
+        GetTemplateHtmlAjax = function (url) {
+            var source;
+            var template;
+            var html;
+
+            $.ajax({
+                url: url,
+                cache: true
+            }).then(function (data) {
+                // console.log(data);
+                $('#delivery-id').html(data);
+
+            });
+        };
+
+    </script>
+
+}
+
+<div id="delivery-id">--</div>

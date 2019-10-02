@@ -1,0 +1,120 @@
+﻿@model CodeProject.StoreDB.Portal.Classes.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "AddressAndPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Asset/Client/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Asset/Client/css/Order.css" rel="stylesheet" />
+<link href="~/Asset/Client/css/Cart.css" rel="stylesheet" />
+
+<br />
+<h1><b> Checkout Order</b>  </h1>
+<br />
+
+<div class="row">
+    <div class="col-25">
+        <div class="container">
+            <table>
+                <tr>
+                    <th>
+                        Prodcut Name
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Price (each)
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+
+                </tr>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr id="row-@item.">
+                        <td>
+                            @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ProductId }, null)
+                        </td>
+                        <td>
+                            <img src="@item.ProductImage" alt="No photo" width="40" height="45" />
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.Count
+
+                        </td>
+
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        Total
+                    </td>
+                    <td></td>
+                    <td></td>
+
+
+                    <td id="cart-total">
+                        @Model.CartTotal
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="col-75">
+        <div class="container">
+            <form action="/Checkout/AddressAndPayment" method="post">
+
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Billing Address</h3>
+                        <br />
+                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                        <input type="text" id="fname" name="CustomerName" placeholder="John M. Doe">
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" name="CustomerEmail" placeholder="john@example.com">
+                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                        <input type="text" id="adr" name="CustomerAddress" placeholder="542 W. 15th Street">
+                        <label for="mobile"><i class="fa fa-address-card-o"></i> Mobile phone</label>
+                        <input type="text" id="mobile" name="CustomerMobile" placeholder="0123">
+                        <label for="msg"><i class="fa fa-address-card-o"></i> Message </label>
+                        <input type="text" id="msg" name="CustomerMessage" placeholder="542 W. 15th Street">
+
+
+                    </div>
+
+                    <div class="col-50">
+                        <h3>Payment</h3>
+                        <br />
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        <label for="cname">Payment Method</label>
+                        <input type="text" id="cname" name="PaymentMethod" placeholder="Thanh toán khi nhận hàng">
+
+                        <label for="PromoCode"><i class="fa fa-address-card-o"></i> Promo code </label>
+                        <input type="text" id="mobile" name="PromoCode" placeholder="FREE">
+
+                    </div>
+
+                </div>
+                <label>
+                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                </label>
+                <input type="submit" value="Continue to checkout" class="btn">
+            </form>
+        </div>
+    </div>
+
+</div>
+

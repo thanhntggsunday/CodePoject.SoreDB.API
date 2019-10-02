@@ -1,0 +1,11 @@
+﻿@model CodeProject.StoreDB.Portal.Classes.ViewModels.OrderViewModel
+@{
+    ViewBag.Title = "Checkout Complete";
+}
+<br />
+<h2>Checkout Complete</h2>
+<p>Thanks for your order! Your order number is: @Model.ID</p>
+<p>
+    How about shopping for some more product in our
+    @Html.ActionLink("store", "Index", "Home")
+</p>

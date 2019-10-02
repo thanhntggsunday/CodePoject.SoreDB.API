@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A44DF2E8-6FF4-4725-A53E-3552B04865E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeProject.StoreDB.BusinessSevice</RootNamespace>
+    <AssemblyName>CodeProject.StoreDB.BusinessSevice</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.4\lib\netstandard2.0\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.4.0\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessServiceModels\IShoppingCartBusinessService.cs" />
+    <Compile Include="BusinessServiceModels\ShoppingCartBusinessService.cs" />
+    <Compile Include="BusinessRules\CartItemBusinessRules.cs" />
+    <Compile Include="BusinessRules\OrderBusinessRules.cs" />
+    <Compile Include="BusinessRules\OrderDetailBusinessRules.cs" />
+    <Compile Include="BusinessRules\PostBusinessRules.cs" />
+    <Compile Include="BusinessRules\PostCategoryBusinessRules.cs" />
+    <Compile Include="BusinessRules\ProductBusinessRules.cs" />
+    <Compile Include="BusinessRules\ProductCategoryBusinessRules.cs" />
+    <Compile Include="BusinessRules\TagBusinessRules.cs" />
+    <Compile Include="BusinessService\OderBusinessService.cs" />
+    <Compile Include="BusinessService\OrderDetailBusinessService.cs" />
+    <Compile Include="BusinessService\PostBusinessService.cs" />
+    <Compile Include="BusinessService\PostCategoryBusinessService.cs" />
+    <Compile Include="BusinessService\ProductBusinessService.cs" />
+    <Compile Include="BusinessService\ProductCategoryBusinessService.cs" />
+    <Compile Include="BusinessService\TagBusinessService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CodeProject.StoreDB.Common\CodeProject.StoreDB.Common.csproj">
+      <Project>{c8d3a615-8c12-4274-b17e-f6a6be31f5a1}</Project>
+      <Name>CodeProject.StoreDB.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeProject.StoreDB.DataService\CodeProject.StoreDB.DataService.csproj">
+      <Project>{4167fcf2-f3da-4a97-a5cd-4c9e156546e2}</Project>
+      <Name>CodeProject.StoreDB.DataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeProject.StoreDB.Interfaces\CodeProject.StoreDB.Interfaces.csproj">
+      <Project>{f4f61c41-f95a-4f76-85c5-038e80480405}</Project>
+      <Name>CodeProject.StoreDB.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeProject.StoreDB.Model\CodeProject.StoreDB.Model.csproj">
+      <Project>{48f0584c-f8f5-44ae-9640-d7350044c528}</Project>
+      <Name>CodeProject.StoreDB.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

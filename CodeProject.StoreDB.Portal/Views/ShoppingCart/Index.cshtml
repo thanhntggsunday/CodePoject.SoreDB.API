@@ -1,0 +1,89 @@
+﻿@model CodeProject.StoreDB.Portal.Models.ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+<script src="~/Asset/Client/Scripts/CartController.js"></script>
+}
+<link href="~/Asset/Client/css/Cart.css" rel="stylesheet" />
+
+<br />
+
+<h3>
+    <em>Review</em> your cart:
+</h3>
+<p class="button">
+    @Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
+</p>
+
+<div id="update-message">
+</div>
+<br />
+
+<table>
+    <tr>
+        <th>
+            Prodcut Name
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Price (each)
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.CartItems)
+    {
+        <tr id="row-@item.">
+            <td>
+                @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ProductId }, null)
+            </td>
+            <td>
+                <img src="@item.ProductImage" alt="No photo" width="40" height="45" />
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                @*@item.Count*@
+                <input type="text" id="item-count-@item.CartItemId" value="@item.Count">
+            </td>
+            <td>
+                <a href="#" class="RemoveLink" data-id="@item.CartItemId">
+                    Remove from
+                    cart
+                </a>|
+                <a href="#" class="UpdateLink" data-id="@item.CartItemId">
+                    Update
+                </a>
+            </td>
+        </tr>
+    }
+        <tr>
+            <td>
+                Total
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td id="cart-total">
+                @Model.CartTotal
+            </td>
+        </tr>
+    @*<tr>
+        <td>
+            Cart count
+        </td>
+        <td></td>
+        <td></td>
+        <td id="cart-status"></td>
+    </tr>*@
+</table>

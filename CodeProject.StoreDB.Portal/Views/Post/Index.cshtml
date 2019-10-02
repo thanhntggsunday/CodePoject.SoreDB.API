@@ -1,0 +1,108 @@
+﻿@model CodeProject.StoreDB.Portal.Classes.ViewModels.PostViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    @foreach (var item in Model.PostDTOs)
+    {
+        var url = " /Post/Details/" + item.ID;
+
+        <div class="image group">
+            <div class="grid images_3_of_1">
+                <a href="@url"><img src="@item.Image" alt="@item.Name" width="300" height="300" /></a>
+            </div>
+            <div class="grid news_desc">
+                <h3>@item.CategoryName</h3>
+                <h4>@item.CreatedDate by <span><a href="#">@item.CreatedBy</a></span></h4>
+                <p>
+                    @item.Content
+                </p>
+            </div>
+        </div>
+    }
+
+    @*Pagination:*@
+    <div class="clear"></div>
+
+    <div class="right">
+        <!--Phân trang-->
+        @if (Model.Pager.TotalPages > 1)
+        {
+
+            var link = "/Post";
+
+            <div class="pagination">
+
+                @if (Model.Pager.CurrentPageNumber > 1)
+                {
+                    <a href="@link?page=1" title="Trang đầu" class="first">First</a>
+
+                    <a href="@link?page=@Model.Pager.PrevPageNumber" title="Trang trước" class="prev">Prev</a>
+
+                }
+                @for (int i = Model.Pager.StartPageNumber; i <= Model.Pager.EndPageNumber; i++)
+                {
+                    if (Model.Pager.CurrentPageNumber == i)
+                    {
+
+                        <a href="@link?page=@i" class="active" title="Trang @i">@i</a>
+                    }
+                    else
+                    {
+                        <a href="@link?page=@i" title="Trang @i" class="pos">@i</a>
+                    }
+                }
+                @if (Model.Pager.CurrentPageNumber < Model.Pager.TotalPages)
+                {
+                    <a href="@link?page=@Model.Pager.NextPageNumber" class="next" title="Trang sau">Next</a>
+                    <a href="@link?page=@Model.Pager.LastPageNumber" class="last" title="Trang cuối">Last</a>
+                }
+            </div>
+
+        }
+        else
+        {
+            int totalPage = Model.Pager.TotalPages;
+            if (totalPage == 0)
+            {
+                <span>Không có bản ghi nào</span>
+            }
+
+        }
+    </div>
+</div>
+
+
+<script>
+    var arrP = $(".grid.news_desc p");
+    var value = $($(".grid.news_desc p")[0]).find("html").context.textContent;
+    // var res = document.write(value);
+
+    arrP.each(function( index ) {
+      // console.log( index + ": " + $( this ).text() );
+        var val = arrP[index].innerText;
+        var wrapper = document.createElement('p');
+        wrapper.innerHTML = val;
+        arrP[index].innerText = '';
+        arrP[index].append(wrapper);
+    });
+
+    function myFunction(item, index) {
+        var val = item.context.textContent;
+        var wrapper = document.createElement('p');
+        wrapper.innerHTML = val;
+        item.find("html").context.textContent = '';
+        item.find("html").context.append(wrapper);
+    }
+
+    // var wrapper = document.createElement('p');
+    // wrapper.innerHTML = value;
+    // var div= wrapper.firstChild;
+
+    // $($(".grid.news_desc p")[0]).find("html").context.textContent = '';
+    // $($(".grid.news_desc p")[0]).find("html").context.append(wrapper);
+
+</script>

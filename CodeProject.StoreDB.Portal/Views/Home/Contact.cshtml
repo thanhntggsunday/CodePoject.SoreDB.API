@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+@section Scripts{
+   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = '/Asset/Client/Templates/Contact.html';
+
+            GetTemplateHtmlAjax(url);
+        });
+
+        GetTemplateHtmlAjax = function (url) {
+            var source;
+            var template;
+            var html;
+
+            $.ajax({
+                url: url,
+                cache: true
+            }).then(function (data) {
+                // console.log(data);
+                $('#contact-id').html(data);
+
+            });
+        };
+
+    </script>
+
+}
+
+<div id="contact-id">--</div>
