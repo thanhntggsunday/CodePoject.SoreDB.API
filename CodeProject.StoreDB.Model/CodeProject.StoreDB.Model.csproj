@@ -56,25 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\CartItemDTO.cs" />
-    <Compile Include="DTO\ErrorDTO.cs" />
-    <Compile Include="DTO\FooterDTO.cs" />
-    <Compile Include="DTO\MenuDTO.cs" />
-    <Compile Include="DTO\MenuGroupDTO.cs" />
-    <Compile Include="DTO\OrderDTO.cs" />
-    <Compile Include="DTO\OrderDetailDTO.cs" />
-    <Compile Include="DTO\PageDTO.cs" />
-    <Compile Include="DTO\PostDTO.cs" />
-    <Compile Include="DTO\PostCategoryDTO.cs" />
-    <Compile Include="DTO\ProductDTO.cs" />
-    <Compile Include="DTO\ProductCategoryDTO.cs" />
-    <Compile Include="DTO\RoleDTO.cs" />
-    <Compile Include="DTO\SlideDTO.cs" />
-    <Compile Include="DTO\SupportOnlineDTO.cs" />
-    <Compile Include="DTO\SystemConfigDTO.cs" />
-    <Compile Include="DTO\TagDTO.cs" />
-    <Compile Include="DTO\UserRolesDTO.cs" />
-    <Compile Include="DTO\VisitorStatisticDTO.cs" />
     <Compile Include="Entities\ApplicationDbContext.cs" />
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Entities\CartItem.cs" />
