@@ -12,12 +12,12 @@ namespace CodeProject.StoreDB.Interfaces.DAL
 
         void Update(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType);
 
-        dynamic GetById(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType);
+        T GetById(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType);
 
-        List<dynamic> GetManyRows(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType);
+        List<T> GetManyRows(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType);
 
         int GetCount(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType);
 
-        List<dynamic> GetAll(string sqlQuery, CommandType commandType);
+        List<T> GetAll(string sqlQuery, CommandType commandType);
     }
 }

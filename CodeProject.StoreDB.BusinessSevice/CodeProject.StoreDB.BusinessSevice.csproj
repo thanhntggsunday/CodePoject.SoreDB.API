@@ -74,6 +74,14 @@
     <Compile Include="BusinessService\ProductBusinessService.cs" />
     <Compile Include="BusinessService\ProductCategoryBusinessService.cs" />
     <Compile Include="BusinessService\TagBusinessService.cs" />
+    <Compile Include="Interfaces\IBusinessServiceBase.cs" />
+    <Compile Include="Interfaces\IOrderBusinessService.cs" />
+    <Compile Include="Interfaces\IOrderDetailBusinessService.cs" />
+    <Compile Include="Interfaces\IPostBusinessService.cs" />
+    <Compile Include="Interfaces\IPostCategoryBusinessService.cs" />
+    <Compile Include="Interfaces\IProductBusinessService.cs" />
+    <Compile Include="Interfaces\IProductCategoryBusinessService.cs" />
+    <Compile Include="Interfaces\ITagBusinessService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -85,10 +93,6 @@
     <ProjectReference Include="..\CodeProject.StoreDB.DataService\CodeProject.StoreDB.DataService.csproj">
       <Project>{4167fcf2-f3da-4a97-a5cd-4c9e156546e2}</Project>
       <Name>CodeProject.StoreDB.DataService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodeProject.StoreDB.Interfaces\CodeProject.StoreDB.Interfaces.csproj">
-      <Project>{f4f61c41-f95a-4f76-85c5-038e80480405}</Project>
-      <Name>CodeProject.StoreDB.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\CodeProject.StoreDB.Model\CodeProject.StoreDB.Model.csproj">
       <Project>{48f0584c-f8f5-44ae-9640-d7350044c528}</Project>

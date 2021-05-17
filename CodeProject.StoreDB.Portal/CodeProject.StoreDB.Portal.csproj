@@ -3327,10 +3327,6 @@
       <Project>{4167FCF2-F3DA-4A97-A5CD-4C9E156546E2}</Project>
       <Name>CodeProject.StoreDB.DataService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeProject.StoreDB.Interfaces\CodeProject.StoreDB.Interfaces.csproj">
-      <Project>{F4F61C41-F95A-4F76-85C5-038E80480405}</Project>
-      <Name>CodeProject.StoreDB.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CodeProject.StoreDB.Model\CodeProject.StoreDB.Model.csproj">
       <Project>{48f0584c-f8f5-44ae-9640-d7350044c528}</Project>
       <Name>CodeProject.StoreDB.Model</Name>

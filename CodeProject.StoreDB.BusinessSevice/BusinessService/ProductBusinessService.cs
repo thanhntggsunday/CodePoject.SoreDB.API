@@ -125,7 +125,6 @@
 
                 transaction.ReturnStatus = true;
                 transaction.ReturnMessage.Add("successfully!");
-
             }
             catch (Exception ex)
             {
@@ -149,7 +148,7 @@
         /// <param name="pageSize"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public List<ProductDTO> GetAllProductsByPaging(int currentPageNumber, int pageSize, 
+        public List<ProductDTO> GetAllProductsByPaging(int currentPageNumber, int pageSize,
             out TransactionalInformation transaction)
         {
             transaction = new TransactionalInformation();
@@ -164,40 +163,10 @@
                 param.Add("@PageSize", pageSize);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.ProductRepository.GetManyRows(ProductScript.GetAllPaging, param,
+                productsDtoList = _dataService.ProductRepository.GetManyRows(ProductScript.GetAllPaging, param,
                                                                               CommandType.Text);
 
                 int totalRow = param.Get<int>("@TotalRows");
-
-                foreach (var item in result)
-                {
-                    productsDtoList.Add(new ProductDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,
-                        MoreImages = item.MoreImages,
-                        Price = item.Price,
-                        PromotionPrice = item.PromotionPrice,
-                        Warranty = item.Warranty,
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status,
-                        Quantity = item.Quantity
-                    });
-                }
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRow, pageSize, currentPageNumber);
                 transaction.ReturnStatus = true;
@@ -240,31 +209,7 @@
 
                 var param = new DynamicParameters();
                 param.Add("@ID", id);
-                var item = _dataService.ProductRepository.GetById(ProductScript.GetById, param, CommandType.Text);
-
-                productDTO.ID = item.ID;
-                productDTO.Name = item.Name;
-                productDTO.Alias = item.Alias;
-                productDTO.CategoryID = item.CategoryID;
-                productDTO.Image = item.Image;
-                productDTO.MoreImages = item.MoreImages;
-                productDTO.Price = item.Price;
-                productDTO.PromotionPrice = item.PromotionPrice;
-                productDTO.Warranty = item.Warranty;
-                productDTO.Description = item.Description;
-                productDTO.Content = item.Content;
-                productDTO.HomeFlag = item.HomeFlag;
-                productDTO.HotFlag = item.HotFlag;
-                productDTO.ViewCount = item.ViewCount;
-                productDTO.CreatedDate = item.CreatedDate;
-                productDTO.CreatedBy = item.CreatedBy;
-                productDTO.UpdatedDate = item.UpdatedDate;
-                productDTO.UpdatedBy = item.UpdatedBy;
-                productDTO.MetaKeyword = item.MetaKeyword;
-                productDTO.MetaDescription = item.Description;
-                productDTO.Status = item.Status;
-                productDTO.Quantity = item.Quantity;
-                productDTO.CategoryName = item.CategoryName;
+                productDTO = _dataService.ProductRepository.GetById(ProductScript.GetById, param, CommandType.Text);
 
                 transaction.ReturnStatus = true;
                 transaction.ReturnMessage.Add("successfully!");
@@ -350,41 +295,10 @@
                 param.Add("@CategoryID", categoryId);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.ProductRepository.GetManyRows(
+                productsDtoList = _dataService.ProductRepository.GetManyRows(
                     ProductScript.GetAllPagingByCategoryId, param, CommandType.Text);
 
                 totalRows = param.Get<int>("@TotalRows");
-
-                foreach (var item in result)
-                {
-                    productsDtoList.Add(new ProductDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,
-                        MoreImages = item.MoreImages,
-                        Price = item.Price,
-                        PromotionPrice = item.PromotionPrice,
-                        Warranty = item.Warranty,
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status,
-                        Quantity = item.Quantity
-                    });
-
-                };
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows,
                     pageSize, currentPageNumber);
@@ -433,40 +347,10 @@
                 param.Add("@ProductName", productName);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.ProductRepository.GetManyRows(
+                productsDtoList = _dataService.ProductRepository.GetManyRows(
                     ProductScript.GetAllPagingByProductName, param, CommandType.Text);
 
                 totalRows = param.Get<int>("@TotalRows");
-
-                foreach (var item in result)
-                {
-                    productsDtoList.Add(new ProductDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,
-                        MoreImages = item.MoreImages,
-                        Price = item.Price,
-                        PromotionPrice = item.PromotionPrice,
-                        Warranty = item.Warranty,
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status,
-                        Quantity = item.Quantity
-                    });
-                };
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows,
                     pageSize, currentPageNumber);
@@ -515,74 +399,14 @@
                 var param = new DynamicParameters();
                 param.Add("@CategoryID", 1);
 
-                var result = _dataService.ProductRepository.GetManyRows(
+                newLaptops = _dataService.ProductRepository.GetManyRows(
                     ProductScript.GetNewProductsByCategoryId, param, CommandType.Text);
-
-                foreach (var item in result)
-                {
-                    newLaptops.Add(new ProductDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,
-                        MoreImages = item.MoreImages,
-                        Price = item.Price,
-                        PromotionPrice = item.PromotionPrice,
-                        Warranty = item.Warranty,
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status,
-                        Quantity = item.Quantity
-                    });
-                };
 
                 param = new DynamicParameters();
                 param.Add("@CategoryID", 2);
 
-                result = _dataService.ProductRepository.GetManyRows(
+                newSmartPhones = _dataService.ProductRepository.GetManyRows(
                     ProductScript.GetNewProductsByCategoryId, param, CommandType.Text);
-
-                foreach (var item in result)
-                {
-                    newSmartPhones.Add(new ProductDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,
-                        MoreImages = item.MoreImages,
-                        Price = item.Price,
-                        PromotionPrice = item.PromotionPrice,
-                        Warranty = item.Warranty,
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status,
-                        Quantity = item.Quantity
-                    });
-                };
 
                 transaction.Pager.TotalPages = 1;
                 transaction.ReturnStatus = true;
@@ -622,40 +446,10 @@
                 param.Add("@ProductName", productName);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.ProductRepository.GetManyRows(
+                productsDtoList = _dataService.ProductRepository.GetManyRows(
                     ProductScript.GetAllPagingByProductName, param, CommandType.Text);
 
                 totalRows = param.Get<int>("@TotalRows");
-
-                foreach (var item in result)
-                {
-                    productsDtoList.Add(new ProductDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,
-                        MoreImages = item.MoreImages,
-                        Price = item.Price,
-                        PromotionPrice = item.PromotionPrice,
-                        Warranty = item.Warranty,
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status,
-                        Quantity = item.Quantity
-                    });
-                };
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows,
                     pageSize, currentPageNumber);
@@ -680,7 +474,7 @@
             return productsDtoList;
         }
 
-        public void GetProductDetailsAndProductsRelate(object productID, out ProductDTO productDTO, 
+        public void GetProductDetailsAndProductsRelate(object productID, out ProductDTO productDTO,
             out List<ProductDTO> productDTOs, out TransactionalInformation transaction)
         {
             transaction = new TransactionalInformation();
@@ -697,69 +491,15 @@
 
                 var param = new DynamicParameters();
                 param.Add("@ID", id);
-                var item = _dataService.ProductRepository.GetById(ProductScript.GetById, param, CommandType.Text);
-
-                productDTO.ID = item.ID;
-                productDTO.Name = item.Name;
-                productDTO.Alias = item.Alias;
-                productDTO.CategoryID = item.CategoryID;
-                productDTO.Image = item.Image;
-                productDTO.MoreImages = item.MoreImages;
-                productDTO.Price = item.Price;
-                productDTO.PromotionPrice = item.PromotionPrice;
-                productDTO.Warranty = item.Warranty;
-                productDTO.Description = item.Description;
-                productDTO.Content = item.Content;
-                productDTO.HomeFlag = item.HomeFlag;
-                productDTO.HotFlag = item.HotFlag;
-                productDTO.ViewCount = item.ViewCount;
-                productDTO.CreatedDate = item.CreatedDate;
-                productDTO.CreatedBy = item.CreatedBy;
-                productDTO.UpdatedDate = item.UpdatedDate;
-                productDTO.UpdatedBy = item.UpdatedBy;
-                productDTO.MetaKeyword = item.MetaKeyword;
-                productDTO.MetaDescription = item.Description;
-                productDTO.Status = item.Status;
-                productDTO.Quantity = item.Quantity;
-                productDTO.CategoryName = item.CategoryName;
+                productDTO = _dataService.ProductRepository.GetById(ProductScript.GetById, param, CommandType.Text);
 
                 // Get product Relate:
                 param = new DynamicParameters();
                 param.Add("@CategoryID", productDTO.CategoryID);
                 param.Add("@ID", id);
 
-                var result = _dataService.ProductRepository.GetManyRows(
+                productDTOs = _dataService.ProductRepository.GetManyRows(
                     ProductScript.GetProductsRelate, param, CommandType.Text);
-
-                foreach (var element in result)
-                {
-                    productDTOs.Add(new ProductDTO()
-                    {
-                        ID = element.ID,
-                        Name = element.Name,
-                        Alias = element.Alias,
-                        CategoryID = element.CategoryID,
-                        CategoryName = element.CategoryName,
-                        Image = element.Image,
-                        MoreImages = element.MoreImages,
-                        Price = element.Price,
-                        PromotionPrice = element.PromotionPrice,
-                        Warranty = element.Warranty,
-                        Description = element.Description,
-                        Content = element.Content,
-                        HomeFlag = element.HomeFlag,
-                        HotFlag = element.HotFlag,
-                        ViewCount = element.ViewCount,
-                        CreatedDate = element.CreatedDate,
-                        CreatedBy = element.CreatedBy,
-                        UpdatedDate = element.UpdatedDate,
-                        UpdatedBy = element.UpdatedBy,
-                        MetaKeyword = element.MetaKeyword,
-                        MetaDescription = element.Description,
-                        Status = element.Status,
-                        Quantity = element.Quantity
-                    });
-                };
 
                 transaction.ReturnStatus = true;
 

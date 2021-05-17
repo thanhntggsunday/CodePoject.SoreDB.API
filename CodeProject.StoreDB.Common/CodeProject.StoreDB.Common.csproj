@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automapper\AutoMapperConfig.cs" />
+    <Compile Include="Classes\BaseClass.cs" />
     <Compile Include="Classes\Pager.cs" />
     <Compile Include="Classes\Roles.cs" />
     <Compile Include="Classes\SearchContent.cs" />

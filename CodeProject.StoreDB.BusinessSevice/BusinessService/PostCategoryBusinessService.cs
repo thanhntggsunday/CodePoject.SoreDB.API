@@ -141,22 +141,8 @@
 
                 var param = new DynamicParameters();
                 param.Add("@ID", id);
-                var item = _dataService.PostCategoryRepository.GetById(PostCategoryScript.GetById,
+                postDto = _dataService.PostCategoryRepository.GetById(PostCategoryScript.GetById,
                     param, CommandType.Text);
-
-                postDto.ID = item.ID;
-                postDto.Name = item.Name;
-                postDto.Alias = item.Alias;
-                postDto.Image = item.Image;
-                postDto.Description = item.Description;
-                postDto.HomeFlag = item.HomeFlag;
-                postDto.CreatedDate = item.CreatedDate;
-                postDto.CreatedBy = item.CreatedBy;
-                postDto.UpdatedDate = item.UpdatedDate;
-                postDto.UpdatedBy = item.UpdatedBy;
-                postDto.MetaKeyword = item.MetaKeyword;
-                postDto.MetaDescription = item.Description;
-                postDto.Status = item.Status;
 
                 transaction.ReturnStatus = true;
                 transaction.ReturnMessage.Add("successfully.");
@@ -197,29 +183,8 @@
                 _dataService.CreateSession();
 
                 // Todo here:
-                var result = _dataService.PostCategoryRepository.GetAll(
+                PostCategorieDtoList = _dataService.PostCategoryRepository.GetAll(
                     PostCategoryScript.GetAll, CommandType.Text);
-
-                foreach (var item in result)
-                {
-                    PostCategorieDtoList.Add(new PostCategoryDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        Image = item.Image,
-                        Description = item.Description,
-                        HomeFlag = item.HomeFlag,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status
-                    });
-                };
-
 
                 transaction.ReturnStatus = true;
                 transaction.ReturnMessage.Add("successfully.");
@@ -312,31 +277,10 @@
                 param.Add("@PageSize", pageSize);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.ProductCategoryRepository.GetManyRows(
+                PostCategorieDtoList = _dataService.PostCategoryRepository.GetManyRows(
                                 ProductCategoryScript.GetAllPaging, param, CommandType.Text);
 
                 totalRows = param.Get<int>("@TotalRows");
-
-
-                foreach (var item in result)
-                {
-                    PostCategorieDtoList.Add(new PostCategoryDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        Image = item.Image,
-                        Description = item.Description,
-                        HomeFlag = item.HomeFlag,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status
-                    });
-                };
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows, pageSize, currentPageNumber);
 
