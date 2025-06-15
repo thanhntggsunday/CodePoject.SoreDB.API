@@ -1,4 +1,5 @@
-﻿using CodeProject.StoreDB.Interfaces.DAL;
+﻿using CodeProject.StoreDB.Common.Classes;
+using CodeProject.StoreDB.Interfaces.DAL;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace CodeProject.StoreDB.DataService.DapperRepository
 {
-    public class DapperRepositoryBase<T> : IDapperRepositoryBase<T>, IDisposable where T : class
+    public class DapperRepositoryBase<T> : BaseClass, IDapperRepositoryBase<T> where T : class
     {
         protected IDbTransaction Transaction { get; private set; }
         protected IDbConnection Connection { get { return Transaction.Connection; } }
@@ -41,9 +42,9 @@ namespace CodeProject.StoreDB.DataService.DapperRepository
             Connection.Execute(sqlQuery, dynamicParameters, commandType: commandType, transaction: Transaction);
         }
 
-        public dynamic GetById(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType)
+        public T GetById(string sqlQuery, DynamicParameters dynamicParameters, CommandType commandType)
         {
-            IList<dynamic> items = Connection.Query<dynamic>(
+            IList<T> items = Connection.Query<T>(
                 sqlQuery, dynamicParameters, commandType: commandType,
                 transaction: Transaction
              ).ToList();
@@ -53,10 +54,10 @@ namespace CodeProject.StoreDB.DataService.DapperRepository
             return obj;
         }
 
-        public List<dynamic> GetManyRows(string sqlQuery, DynamicParameters dynamicParameters,
+        public List<T> GetManyRows(string sqlQuery, DynamicParameters dynamicParameters,
                                           CommandType commandType)
         {
-            IList<dynamic> items = Connection.Query<dynamic>(
+            IList<T> items = Connection.Query<T>(
                 sqlQuery, dynamicParameters,
                 commandType: commandType, transaction: Transaction
             ).ToList();
@@ -74,9 +75,9 @@ namespace CodeProject.StoreDB.DataService.DapperRepository
             return result;
         }
 
-        public List<dynamic> GetAll(string sqlQuery, CommandType commandType)
+        public List<T> GetAll(string sqlQuery, CommandType commandType)
         {
-            IList<dynamic> items = Connection.Query<dynamic>(
+            IList<T> items = Connection.Query<T>(
                 sqlQuery, commandType: commandType,
                 transaction: Transaction
              ).ToList();
@@ -84,8 +85,6 @@ namespace CodeProject.StoreDB.DataService.DapperRepository
             return items.ToList();
         }
 
-        public void Dispose()
-        {
-        }
+        
     }
 }

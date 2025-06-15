@@ -145,27 +145,8 @@
 
                 var param = new DynamicParameters();
                 param.Add("@ID", id);
-                var item = _dataService.PostRepository.GetById(PostScript.GetById, param, CommandType.Text);
-
-                postDto.ID = item.ID;
-                postDto.Name = item.Name;
-                postDto.Alias = item.Alias;
-                postDto.CategoryID = item.CategoryID;
-                postDto.Image = item.Image;               
-                postDto.Description = item.Description;
-                postDto.Content = item.Content;
-                postDto.HomeFlag = item.HomeFlag;
-                postDto.HotFlag = item.HotFlag;
-                postDto.ViewCount = item.ViewCount;
-                postDto.CreatedDate = item.CreatedDate;
-                postDto.CreatedBy = item.CreatedBy;
-                postDto.UpdatedDate = item.UpdatedDate;
-                postDto.UpdatedBy = item.UpdatedBy;
-                postDto.MetaKeyword = item.MetaKeyword;
-                postDto.MetaDescription = item.Description;
-                postDto.Status = item.Status;              
-                postDto.CategoryName = item.CategoryName;
-
+                postDto = _dataService.PostRepository.GetById(PostScript.GetById, param, CommandType.Text);
+                              
                 transaction.ReturnStatus = true;
                 transaction.ReturnMessage.Add("successfully.");
             }
@@ -209,37 +190,11 @@
                 param.Add("@PageSize", pageSize);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.PostRepository.GetManyRows(PostScript.GetAllPaging, param,
+                postDtoList = _dataService.PostRepository.GetManyRows(PostScript.GetAllPaging, param,
                                                                      CommandType.Text);
 
                 totalRows = param.Get<int>("@TotalRows");
-
-                foreach (var item in result)
-                {
-                    postDtoList.Add(new PostDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        CategoryID = item.CategoryID,
-                        CategoryName = item.CategoryName,
-                        Image = item.Image,                       
-                        Description = item.Description,
-                        Content = item.Content,
-                        HomeFlag = item.HomeFlag,
-                        HotFlag = item.HotFlag,
-                        ViewCount = item.ViewCount,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status                       
-                    });
-                }
-
-
+               
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows,
                                                                         pageSize, currentPageNumber);
                 transaction.ReturnStatus = true;

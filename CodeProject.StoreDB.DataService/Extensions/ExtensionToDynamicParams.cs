@@ -6,7 +6,7 @@ namespace CodeProject.StoreDB.DataService.Extensions
 {
     public static class ExtensionToDynamicParams
     {
-        #region Product:
+        #region Product
 
         private static DynamicParameters ToDynamicParametersForObjectNoId(Product product)
         {
@@ -55,9 +55,9 @@ namespace CodeProject.StoreDB.DataService.Extensions
             return param;
         }
 
-        #endregion Product:
+        #endregion Product
 
-        #region Post:
+        #region Post
 
         private static DynamicParameters ToDynamicParametersForObjectNoId(Post post)
         {
@@ -100,7 +100,7 @@ namespace CodeProject.StoreDB.DataService.Extensions
             return param;
         }
 
-        #endregion Post:
+        #endregion Post
 
         #region ProductCategory
 
@@ -188,7 +188,7 @@ namespace CodeProject.StoreDB.DataService.Extensions
 
         #endregion PostCategory
 
-        #region Order:
+        #region Order
 
         private static DynamicParameters ToDynamicParametersForObjectNoId(Order order)
         {
@@ -229,9 +229,9 @@ namespace CodeProject.StoreDB.DataService.Extensions
             return param;
         }
 
-        #endregion Order:
+        #endregion Order
 
-        #region Order Details:
+        #region Order Details
 
         private static DynamicParameters ToDynamicParametersForObjectNoId(this OrderDetail orderDetail)
         {
@@ -243,9 +243,9 @@ namespace CodeProject.StoreDB.DataService.Extensions
             return param;
         }
 
-        #endregion Order Details:
+        #endregion Order Details
 
-        #region CartItems:
+        #region CartItems
 
         private static DynamicParameters ToDynamicParametersForObjectNoId(CartItem cartItem)
         {
@@ -276,6 +276,6 @@ namespace CodeProject.StoreDB.DataService.Extensions
             return param;
         }
 
-        #endregion CartItems:
+        #endregion CartItems
     }
 }

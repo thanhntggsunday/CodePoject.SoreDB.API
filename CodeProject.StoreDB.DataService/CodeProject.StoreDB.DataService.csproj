@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="DapperRepository\DapperRepositoryBase.cs" />
     <Compile Include="Extensions\ExtensionToDynamicParams.cs" />
+    <Compile Include="Interfaces\IDapperRepositoryBase.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Logger\Log4NetLogger.cs" />
     <Compile Include="SQL\CartItemsScript.cs" />
     <Compile Include="SQL\OrderDetailsScript.cs" />
@@ -79,10 +81,6 @@
     <ProjectReference Include="..\CodeProject.StoreDB.Common\CodeProject.StoreDB.Common.csproj">
       <Project>{c8d3a615-8c12-4274-b17e-f6a6be31f5a1}</Project>
       <Name>CodeProject.StoreDB.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodeProject.StoreDB.Interfaces\CodeProject.StoreDB.Interfaces.csproj">
-      <Project>{f4f61c41-f95a-4f76-85c5-038e80480405}</Project>
-      <Name>CodeProject.StoreDB.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\CodeProject.StoreDB.Model\CodeProject.StoreDB.Model.csproj">
       <Project>{48f0584c-f8f5-44ae-9640-d7350044c528}</Project>

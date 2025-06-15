@@ -137,29 +137,10 @@
             {
                 _dataService.CreateSession();
 
-                var result = _dataService.ProductCategoryRepository.GetAll(
+                productCategoryDtoList = _dataService.ProductCategoryRepository.GetAll(
                     ProductCategoryScript.GetAll, CommandType.Text);
 
-                foreach (var item in result)
-                {
-                    productCategoryDtoList.Add(new ProductCategoryDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        Image = item.Image,
-                        Description = item.Description,
-                        HomeFlag = item.HomeFlag,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status
-                    });
-                };
-
+              
                 transaction.ReturnStatus = true;
             }
             catch (Exception ex)
@@ -196,24 +177,10 @@
 
                 var param = new DynamicParameters();
                 param.Add("@ID", id);
-                var item = _dataService.ProductCategoryRepository.GetById(ProductCategoryScript.GetById, 
+                productCategory = _dataService.ProductCategoryRepository.GetById(ProductCategoryScript.GetById, 
                     param, CommandType.Text);
 
-                productCategory.ID = item.ID;
-                productCategory.Name = item.Name;
-                productCategory.Alias = item.Alias;                
-                productCategory.Image = item.Image; 
-                productCategory.Description = item.Description;
-                productCategory.HomeFlag = item.HomeFlag;
-                productCategory.CreatedDate = item.CreatedDate;
-                productCategory.CreatedBy = item.CreatedBy;
-                productCategory.UpdatedDate = item.UpdatedDate;
-                productCategory.UpdatedBy = item.UpdatedBy;
-                productCategory.MetaKeyword = item.MetaKeyword;
-                productCategory.MetaDescription = item.Description;
-                productCategory.Status = item.Status;
-                
-
+             
                 transaction.ReturnStatus = true;
             }
             catch (Exception ex)
@@ -245,7 +212,6 @@
         {
             transaction = new TransactionalInformation();
 
-            List<ProductCategory> productCategorys = new List<ProductCategory>();
             List<ProductCategoryDTO> productCategoryDtoList = new List<ProductCategoryDTO>();
 
             try
@@ -260,31 +226,11 @@
                 param.Add("@PageSize", pageSize);
                 param.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = _dataService.ProductCategoryRepository.GetManyRows(
+                productCategoryDtoList = _dataService.ProductCategoryRepository.GetManyRows(
                                 ProductCategoryScript.GetAllPaging, param, CommandType.Text);
 
                 totalRows = param.Get<int>("@TotalRows");
 
-
-                foreach (var item in result)
-                {
-                    productCategoryDtoList.Add(new ProductCategoryDTO()
-                    {
-                        ID = item.ID,
-                        Name = item.Name,
-                        Alias = item.Alias,
-                        Image = item.Image,
-                        Description = item.Description,
-                        HomeFlag = item.HomeFlag,
-                        CreatedDate = item.CreatedDate,
-                        CreatedBy = item.CreatedBy,
-                        UpdatedDate = item.UpdatedDate,
-                        UpdatedBy = item.UpdatedBy,
-                        MetaKeyword = item.MetaKeyword,
-                        MetaDescription = item.Description,
-                        Status = item.Status
-                    });
-                };
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows, 
                     pageSize, currentPageNumber);
@@ -302,11 +248,7 @@
                 _dataService.CloseSession();
             }
 
-            foreach (var item in productCategorys)
-            {
-                productCategoryDtoList.Add(Mapper.Map<ProductCategory, ProductCategoryDTO>(item));
-            }
-
+            
             return productCategoryDtoList;
         }
 

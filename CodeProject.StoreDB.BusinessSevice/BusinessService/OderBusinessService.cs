@@ -172,20 +172,7 @@
 
                 param.Add("@ID", id);
 
-                var order = _dataService.OrderRepository.GetById(OrderScript.GetById, param, CommandType.Text);
-
-                orderDto.CreatedBy = order.CreatedBy;
-                orderDto.CreatedDate = order.CreatedDate;
-                orderDto.CustomerAddress = order.CustomerAddress;
-                orderDto.CustomerEmail = order.CustomerEmail;
-                orderDto.CustomerMessage = order.CustomerMessage;
-                orderDto.CustomerMobile = order.CustomerMobile;
-                orderDto.CustomerName = order.CustomerName;
-                orderDto.ID = order.ID;
-                orderDto.PaymentMethod = order.PaymentMethod;
-                orderDto.PaymentStatus = order.PaymentStatus;
-                orderDto.Status = order.Status;
-                orderDto.Total = order.Total;
+                orderDto = _dataService.OrderRepository.GetById(OrderScript.GetById, param, CommandType.Text);
 
                 int orderId = (int)id;
                 var orderDetailParam = new DynamicParameters();
@@ -253,31 +240,10 @@
                 parameters.Add("@PageIndex", currentPageNumber);
                 parameters.Add("@TotalRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var orders = _dataService.OrderRepository
+                ordersDtoList = _dataService.OrderRepository
                                         .GetManyRows(OrderScript.GetAllPaging,
                                             parameters, CommandType.Text);
                 totalRows = parameters.Get<int>("@TotalRows");
-
-                foreach (var order in orders)
-                {
-                    var orderDto = new OrderDTO();
-
-                    orderDto.CreatedBy = order.CreatedBy;
-                    orderDto.CreatedDate = order.CreatedDate;
-                    orderDto.CustomerAddress = order.CustomerAddress;
-                    orderDto.CustomerEmail = order.CustomerEmail;
-                    orderDto.CustomerMessage = order.CustomerMessage;
-                    orderDto.CustomerMobile = order.CustomerMobile;
-                    orderDto.CustomerName = order.CustomerName;
-                    orderDto.ID = order.ID;
-                    orderDto.PaymentMethod = order.PaymentMethod;
-                    orderDto.PaymentStatus = order.PaymentStatus;
-                    orderDto.Status = order.Status;
-                    orderDto.Total = order.Total;
-
-                    ordersDtoList.Add(orderDto);
-
-                }
 
                 transaction = Utilities.CalculateForPagerOfTransaction(transaction, totalRows, 
                                 pageSize, currentPageNumber);

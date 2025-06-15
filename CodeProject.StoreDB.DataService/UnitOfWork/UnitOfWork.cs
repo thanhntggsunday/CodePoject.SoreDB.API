@@ -3,6 +3,7 @@
     using CodeProject.Interfaces.DAL;
     using CodeProject.StoreDB.DataService.DapperRepository;
     using CodeProject.StoreDB.Interfaces.DAL;
+    using CodeProject.StoreDB.Model.DTO;
     using CodeProject.StoreDB.Model.Entities;
     using System;
     using System.Configuration;
@@ -22,42 +23,42 @@
         /// <summary>
         /// Defines the _productDataServiceRepository
         /// </summary>
-        private IDapperRepositoryBase<Product> _productRepository;
+        private IDapperRepositoryBase<ProductDTO> _productRepository;
 
         /// <summary>
         /// Defines the _cartItemRepository
         /// </summary>
-        private IDapperRepositoryBase<CartItem> _cartItemRepository;
+        private IDapperRepositoryBase<CartItemDTO> _cartItemRepository;
 
         /// <summary>
         /// Defines the _orderRepository
         /// </summary>
-        private IDapperRepositoryBase<Order> _orderRepository;
+        private IDapperRepositoryBase<OrderDTO> _orderRepository;
 
         /// <summary>
         /// Defines the _orderDetailRepository
         /// </summary>
-        private IDapperRepositoryBase<OrderDetail> _orderDetailRepository;
+        private IDapperRepositoryBase<OrderDetailDTO> _orderDetailRepository;
 
         /// <summary>
         /// Defines the _postCategoryRepository
         /// </summary>
-        private IDapperRepositoryBase<PostCategory> _postCategoryRepository;
+        private IDapperRepositoryBase<PostCategoryDTO> _postCategoryRepository;
 
         /// <summary>
         /// Defines the _postRepository
         /// </summary>
-        private IDapperRepositoryBase<Post> _postRepository;
+        private IDapperRepositoryBase<PostDTO> _postRepository;
 
         /// <summary>
         /// Defines the _productCategoryRepository
         /// </summary>
-        private IDapperRepositoryBase<ProductCategory> _productCategoryRepository;
+        private IDapperRepositoryBase<ProductCategoryDTO> _productCategoryRepository;
 
         /// <summary>
         /// Defines the _tagRepository
         /// </summary>
-        private IDapperRepositoryBase<Tag> _tagRepository;
+        private IDapperRepositoryBase<TagDTO> _tagRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
@@ -70,13 +71,13 @@
         /// <summary>
         /// Gets the ProductRepository
         /// </summary>
-        public IDapperRepositoryBase<Product> ProductRepository
+        public IDapperRepositoryBase<ProductDTO> ProductRepository
         {
             get
             {
                 if (_productRepository == null)
                 {
-                    _productRepository = new DapperRepositoryBase<Product>(_transaction);
+                    _productRepository = new DapperRepositoryBase<ProductDTO>(_transaction);
                 }
 
                 return _productRepository;
@@ -86,13 +87,13 @@
         /// <summary>
         /// Gets the CartItemRepository
         /// </summary>
-        public IDapperRepositoryBase<CartItem> CartItemRepository
+        public IDapperRepositoryBase<CartItemDTO> CartItemRepository
         {
             get
             {
                 if (_cartItemRepository == null)
                 {
-                    _cartItemRepository = new DapperRepositoryBase<CartItem>(_transaction);
+                    _cartItemRepository = new DapperRepositoryBase<CartItemDTO>(_transaction);
                 }
 
                 return _cartItemRepository;
@@ -102,13 +103,13 @@
         /// <summary>
         /// Gets the OrderRepository
         /// </summary>
-        public IDapperRepositoryBase<Order> OrderRepository
+        public IDapperRepositoryBase<OrderDTO> OrderRepository
         {
             get
             {
                 if (_orderRepository == null)
                 {
-                    _orderRepository = new DapperRepositoryBase<Order>(_transaction);
+                    _orderRepository = new DapperRepositoryBase<OrderDTO>(_transaction);
                 }
 
                 return _orderRepository;
@@ -118,13 +119,13 @@
         /// <summary>
         /// Gets the OrderDetailRepository
         /// </summary>
-        public IDapperRepositoryBase<OrderDetail> OrderDetailRepository
+        public IDapperRepositoryBase<OrderDetailDTO> OrderDetailRepository
         {
             get
             {
                 if (_orderDetailRepository == null)
                 {
-                    _orderDetailRepository = new DapperRepositoryBase<OrderDetail>(_transaction);
+                    _orderDetailRepository = new DapperRepositoryBase<OrderDetailDTO>(_transaction);
                 }
 
                 return _orderDetailRepository;
@@ -134,13 +135,13 @@
         /// <summary>
         /// Gets the PostCategoryRepository
         /// </summary>
-        public IDapperRepositoryBase<PostCategory> PostCategoryRepository
+        public IDapperRepositoryBase<PostCategoryDTO> PostCategoryRepository
         {
             get
             {
                 if (_postCategoryRepository == null)
                 {
-                    _postCategoryRepository = new DapperRepositoryBase<PostCategory>(_transaction);
+                    _postCategoryRepository = new DapperRepositoryBase<PostCategoryDTO>(_transaction);
                 }
 
                 return _postCategoryRepository;
@@ -150,13 +151,13 @@
         /// <summary>
         /// Gets the PostRepository
         /// </summary>
-        public IDapperRepositoryBase<Post> PostRepository
+        public IDapperRepositoryBase<PostDTO> PostRepository
         {
             get
             {
                 if (_postRepository == null)
                 {
-                    _postRepository = new DapperRepositoryBase<Post>(_transaction);
+                    _postRepository = new DapperRepositoryBase<PostDTO>(_transaction);
                 }
 
                 return _postRepository;
@@ -166,13 +167,13 @@
         /// <summary>
         /// Gets the ProductCategoryRepository
         /// </summary>
-        public IDapperRepositoryBase<ProductCategory> ProductCategoryRepository
+        public IDapperRepositoryBase<ProductCategoryDTO> ProductCategoryRepository
         {
             get
             {
                 if (_productCategoryRepository == null)
                 {
-                    _productCategoryRepository = new DapperRepositoryBase<ProductCategory>(_transaction);
+                    _productCategoryRepository = new DapperRepositoryBase<ProductCategoryDTO>(_transaction);
                 }
 
                 return _productCategoryRepository;
@@ -182,13 +183,13 @@
         /// <summary>
         /// Gets the TagRepository
         /// </summary>
-        public IDapperRepositoryBase<Tag> TagRepository
+        public IDapperRepositoryBase<TagDTO> TagRepository
         {
             get
             {
                 if (_tagRepository == null)
                 {
-                    _tagRepository = new DapperRepositoryBase<Tag>(_transaction);
+                    _tagRepository = new DapperRepositoryBase<TagDTO>(_transaction);
                 }
 
                 return _tagRepository;
